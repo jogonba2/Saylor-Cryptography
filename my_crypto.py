@@ -155,3 +155,10 @@ def miller_rabin(n):
 		# False -> a^((2^s)*n)%n == -1%n with s € {0,...,t-1} / n = (2^t)*p #
 		if (a**n)%n!=1%n or (a**n)%n!=-1%n or False: return False
 	return True
+	
+def criba_eratostenes(n):
+	l,mark = [],[]
+	for i in xrange(2,int(sqrt(n))+1):
+		if i not in mark:
+			for j in xrange(i,int(n/i)+1): mark.append(i*j)
+	return [x for x in xrange(2,n+1) if x not in mark]
